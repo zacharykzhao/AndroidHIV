@@ -31,7 +31,8 @@ if __name__ == '__main__':
 
     data = pickle.load(df)
     test_sha256_all = data["sha256"]
-    test_adj_all = data["adjacent_matrix"]
+    test_adj_all = data["adjace" \
+                        " nt_matrix"]
     test_idx_all = data["node_idx"]
 
     for zidx, test_sha256 in enumerate(test_sha256_all):

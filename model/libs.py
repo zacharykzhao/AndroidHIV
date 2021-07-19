@@ -28,11 +28,9 @@ def extract_feature(adj, pack_idx, type="families"):
 
     # MarkovFeats = np.zeros((max(pack_idx)+1, max(pack_idx)+1))
     MarkovFeats = np.zeros((nn, nn))
-    tmpaa = []
     Norma_all = np.sum(call_relation, axis=1)
     for i in range(0, len(call_relation)):
         Norma = Norma_all[i]
-        tmpaa.append(Norma)
         if Norma == 0:
             MarkovFeats[i] = call_relation[i]
         else:
@@ -40,7 +38,6 @@ def extract_feature(adj, pack_idx, type="families"):
 
     feature = MarkovFeats.flatten()
     return feature
-
 
 
 def find_nn_torch(Q, X, y, k=1):
