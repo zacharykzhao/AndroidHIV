@@ -18,5 +18,5 @@ train_feature, train_label = load_train(data_path + "/preprocess/train_csr_dict_
 knn1 = KNeighborsClassifier(n_neighbors=1)
 knn1.fit(train_feature, train_label)
 pickle.dump(knn1, open('knn1_2021.pkl', 'wb'))
-aaa = knn1.predict(train_feature[0].reshape(1,-1))
+aaa = knn1.predict_proba(train_feature[0].reshape(1,-1))
 b = 1
