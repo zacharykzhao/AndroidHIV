@@ -41,7 +41,9 @@ class CW_Attack(object):
         feature = MarkovFeats.flatten()
         feature = torch.reshape(feature, (1, -1))
         z_x_t = self.substitute(feature)
-        tmp = torch.cat((torch.reshape(0 - z_x_t[0][1], (1, -1)), torch.reshape(torch.tensor(-self.K), (1, -1))))
+        # tmp = torch.cat((torch.reshape(0 - z_x_t[0][1], (1, -1)), torch.reshape(torch.tensor(-self.K), (1, -1))))
+        tmp = torch.cat((torch.reshape(z_x_t[0][0] - z_x_t[0][1], (1, -1)), torch.reshape(torch.tensor(-self.K), (1, -1))))
+
         f = torch.max(tmp)
         loss = torch.sum(torch.sum(torch.square(w_tmp))) + self.c * f  # line 3
         _gradient = loss.backward()
